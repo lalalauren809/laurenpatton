@@ -1,0 +1,43 @@
+#Variable Types
+
+  Categorical Variables 
+
+    Nominal: description (row ID) 
+    Ordinal: inherent ranking (A, B, C assuming there is an order)
+    Binary: two categories
+
+  Quantitative Variables
+
+    Continuous: measurement, age (can be any number) **should be stored as float
+    Discrete: counts (money)
+
+#Handle Duplicates
+
+  Use the duplicated() method to locate full rows that are duplicated
+
+#Missing Values
+
+  You can delete, impute or request missing data.
+
+#Statistics Intuition
+
+  We are more confident when there is:
+    Lower Variability (lower STD)
+    A lower STD means that the data points are generally close to the mean overall
+    Bigger Sample Size (more data)
+
+
+#Confidence Level: 
+  Quantifies how sure we are that the difference we see is a real and not due to random chance. 
+
+  Quantifying Confidence (T-test for continuous variables such as revenue per user)
+
+    Real Life example: we need to choose between two different checkout cart buttons for our A/B test. 
+
+    95% Confidence: 95% chance (95 times out of 100 experiments) that when we conclude there IS a difference there really is. 
+    OR there is a 5% chance that when we conclude there IS a difference but its just due to random chance (we just happened to get a few users in the store assigned to variant B who happened to spend more $$ than others. It had nothing to do with the type of add to cart button provided at checkout)
+    99% Confidence: same logic however we need to a larger sample size or less variability to confirm there is a significant difference between checkout icons.
+
+  Quantifying Confidence (Chi squared test for success rates/percentages)
+
+    Real life example: conversion rates, click through rate (CTR). A pharmaceutical company is testing two advertising banners for their website. One has a 10% CTR and the other has an 11% CTR (11/100 users clicked). When measuring success is there a statistically significant difference between the two banners?
