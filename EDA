@@ -15,16 +15,62 @@
 
   Use the duplicated() method to locate full rows that are duplicated
 
-#Missing Values
+#Missing Values (be careful with values that ARE NOT missing at random)
 
   You can delete, impute or request missing data.
+    1. Request missing data from data owner
+    2. Impute missing data:
+      Single Imputation: less ideal and works for variables with fewer missing values
+        -Categorical (discrete, qualitative): mean/median
+        -Continuous (numeric measurement): mode
+      Multiple Imputation: looks at other variables, ideal when there is more missing data
+        -Use iterative imputer from sklearn
+      Monotone Data: this is used for data that is increasing with another variable (time series)
+        -LOCF: missing value is replaced with the last observed value before it
+        -NOCB: missing value is replaced with the next observed value after it
+        -Linear Interpolation: missing value is replaced by assuming a LINEAR relationship between observed points before and after missing value
+  3. Create NAN category
+  4. Delete Missing Data (if there is enough data)
+
+
+#Categorical Variables:
+  
+  Use label encoding when:
+    
+    1. There are a large number of different categorical variables — because label encoding uses far less data than one-hot encoding
+    2. The categorical values have a particular order to them (for example, age groups can be grouped as youngest to oldest or oldest to youngest)
+    3. You plan to use a decision tree or random forest machine learning model
+
+  Use one-hot encoding when:
+  
+    1. There is a relatively small amount of categorical variables — because one-hot encoding uses much more data than label encoding.
+    2. The categorical variables have no particular order
+    3. You use a machine learning model in combination with dimensionality reduction (like Principal Component Analysis (PCA))
+
+#Outliers
+
+  When looking at each numeric variable we can see whether the distribution is normal or scewed.
+    -Normal distribution: use mean to describe this
+    -Scewed/Outliers: Use median or IQR (more robust)
+    -We can also look and see if the mean/median are close to determine this.
+      1. Right scewed distribution: mean > median
+      2. Left scewed distribution: mean < median
+        -If a variable is scewed to the left then we might want to look at the left side for outliers.
+    
+  How to handle outliers:
+
+    1. Leave them: 
+      -For a dataset that you plan to do EDA/analysis on and nothing else
+      -or for a dataset you are preparing for a model that is resistant to outliers, it is most likely that you are going to leave them in.
+    2. Reassign them: If the dataset is small and/or the data will be used for modeling or machine learning, you are more likely to choose a path of deriving new values to replace the outlier values.
+    3. Delete them: If you are sure the outliers are mistakes, typos, or errors and the dataset will be used for modeling or machine learning, then you are more likely to decide to delete outliers. Of the three choices, you’ll use this one the least.
 
 #Statistics Intuition
 
-  We are more confident when there is:
-    Lower Variability (lower STD)
-    A lower STD means that the data points are generally close to the mean overall
-    Bigger Sample Size (more data)
+  We are more confident when there are the following:
+    1. Lower Variability (lower STD)
+    2. A lower STD means that the data points are generally close to the mean overall
+    3. Bigger Sample Size (more data)
 
 
 #Confidence Level: 
