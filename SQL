@@ -1,1 +1,22 @@
+AGGREGATE Functions:
 
+  COUNT: Returns number of items in a group
+  SUM: Returns the sum of all DISTINCT values in an expression
+  AVG: Returns the average off values in a group (ignores NULLS)
+
+GROUP BY: aggregates values alongside discrete data by collapsing distinct rows of our DB into summary rows that share a particular characteristic.
+
+PRIMARY KEY: one or more columns or fields that that identify a record. It cannot have duplicate values.
+
+UNION vs UNION ALL: union only keeps unique records while union all includes duplicates
+
+TABLE vs VIEW: A view is virtual and is usually used to look at a subset of data.
+
+WHERE vs HAVING: 
+
+LOGICAL OPERATORS (ALL, AND, ANY, EXISTS, IN, NOT, OR, SOME)
+
+  LIKE: is used for pattern matching and utilizes wildcards such as % and _
+  BETWEEN: operator used to select values within a range.
+
+WHERE vs HAVING: Where can be used on rows of data and having is used to filter aggregated data.
