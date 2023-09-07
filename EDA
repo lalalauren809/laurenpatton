@@ -1,21 +1,25 @@
-#Variable Types
+###Variable Types###
 
-  Categorical Variables 
+  -Categorical Variables 
 
     Nominal: description (row ID) 
     Ordinal: inherent ranking (A, B, C assuming there is an order)
     Binary: two categories
 
-  Quantitative Variables
+  -Quantitative Variables
 
     Continuous: measurement, age (can be any number) **should be stored as float
     Discrete: counts (money)
 
-#Handle Duplicates
+###Handle Duplicates###
 
   Use the duplicated() method to locate full rows that are duplicated
 
-#Missing Values (be careful with values that ARE NOT missing at random)
+###Missing Values### 
+
+  -Why are the values missing in the first place? Data that has alot of missing data isnt going to accurately reflect the entire populaiton.
+    -We might need to structure the data in groupby or pivots to explore this. 
+      -Are the blanks actually NAN or zero? If its zero is it actually zero or did someone leave it blank?
 
   You can delete, impute or request missing data.
     1. Request missing data from data owner
@@ -30,10 +34,12 @@
         -NOCB: missing value is replaced with the next observed value after it
         -Linear Interpolation: missing value is replaced by assuming a LINEAR relationship between observed points before and after missing value
   3. Create NAN category
-  4. Delete Missing Data (if there is enough data)
+        -Can be useful for categorical data
+  4. Delete Missing Data 
+        -if theres not too many missing values, wont imbalance our data for classification etc)
+        -Do not delete missing data that ARE NOT missing at random
 
-
-#Categorical Variables:
+###Categorical Variables###
   
   Use label encoding when:
     
@@ -47,25 +53,31 @@
     2. The categorical variables have no particular order
     3. You use a machine learning model in combination with dimensionality reduction (like Principal Component Analysis (PCA))
 
-#Outliers
+###Outliers###
 
   When looking at each numeric variable we can see whether the distribution is normal or scewed.
-    -Normal distribution: use mean to describe this
-    -Scewed/Outliers: Use median or IQR (more robust)
-    -We can also look and see if the mean/median are close to determine this.
-      1. Right scewed distribution: mean > median
-      2. Left scewed distribution: mean < median
-        -If a variable is scewed to the left then we might want to look at the left side for outliers.
-    
-  How to handle outliers:
 
+    -Is the distribution normal?
+      1. Visualize the data to view the shape
+      2. Look at the standard deviation
+      3. Box Plot: a value is an outlier if it is lesser or higher than 1.5 times the IQR
+      4. We can also look and see if the mean/median are close to determine this.
+      - Right scewed distribution: mean > median
+      - Left scewed distribution: mean < median
+        -If a variable is scewed to the left then we might want to look at the left side for outliers.
+
+  Describe the distribution: 
+    1. Normal distribution: use mean to describe this because its NORMAL
+    2. Scewed/Outliers: Use median or IQR (more robust)
+    
+  Handle outliers:
     1. Leave them: 
       -For a dataset that you plan to do EDA/analysis on and nothing else
       -or for a dataset you are preparing for a model that is resistant to outliers, it is most likely that you are going to leave them in.
     2. Reassign them: If the dataset is small and/or the data will be used for modeling or machine learning, you are more likely to choose a path of deriving new values to replace the outlier values.
     3. Delete them: If you are sure the outliers are mistakes, typos, or errors and the dataset will be used for modeling or machine learning, then you are more likely to decide to delete outliers. Of the three choices, you’ll use this one the least.
 
-#Statistics Intuition
+###Statistics Intuition###
 
   We are more confident when there are the following:
     1. Lower Variability (lower STD)
@@ -73,7 +85,8 @@
     3. Bigger Sample Size (more data)
 
 
-#Confidence Level: 
+###Confidence Level###
+
   Quantifies how sure we are that the difference we see is a real and not due to random chance. 
 
   Quantifying Confidence (T-test for continuous variables such as revenue per user)
